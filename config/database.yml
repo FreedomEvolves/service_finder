@@ -1,0 +1,21 @@
+login: &login
+  username: sf_web
+  password: devonly:l/8H/6wiGKarJoAaz6GmJEOIcnKfQNHhq6BAttO4jJSZrwTOEE
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1
+  port: 5432
+
+development:
+  <<: *login
+  database: sf_development
+
+production:
+  <<: *login
+  database: sf_development
+
+test:
+  <<: *login
+  database: sf_test
+
+

@@ -1,0 +1,40 @@
+<%= form_for(@client_search) do |f| %>
+<div class='center'><h4>Search Criteria</h4></div><br>
+  <div class='row center'>
+    <div class='small-4 columns'>City</div>
+    <div class='small-4 columns'>State</div>
+    <div class='small-4 columns'>Country</div>
+  </div>
+  <div class='row center'>
+    <div class='small-4 columns'>
+      <%= f.select :city, ['Mobile', 'Atlanta', 'Macon', 'Birmingham'] %>
+    </div>
+    <div class='small-4 columns'>
+      <%= f.select :state, ['AL', 'FL', 'GA', 'TN'] %>
+    </div>
+    <div class='small-4 columns'>
+      <%= f.select :country, ['USA', 'Canada', 'UK'] %>
+    </div>
+  </div>
+
+<div class='row center'>
+  <div class='small-6 columns'>Distance from Me</div>
+  <div class='small-6 columns'>Search Dates After</div>
+</div>
+  <div class='row center'>
+    <div class='small-6 columns'>
+      <%= f.select :radius_miles, ['5 miles', '10 miles', '25 miles', '50 miles'] %>
+    </div>
+    <div class='small-6 columns'>
+      <%= f.text_field :starting_date, class: 'datepicker'%>
+    </div>
+  </div>
+  <br>
+  <div>
+    <ul class="button-group round even-3">
+      <li><a href="#" class="button small success"><small>ONLY MY EVENTS</small></a></li>
+      <li><a href="#" class="button small success"><small>NOT MY EVENTS</small></a></li>
+      <li><a href="#" class="button small success"><small>ALL EVENTS</small></a></li>
+    </ul>
+  </div>
+<% end %>

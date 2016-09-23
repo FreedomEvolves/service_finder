@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: notes
+#
+#  id         :integer          not null, primary key
+#  event_id   :integer
+#  comment    :text
+#  author     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: 1
+  comment: MyText
+  event_rating: false
+
+two:
+  event_id: 1
+  comment: MyText
+  event_rating: false

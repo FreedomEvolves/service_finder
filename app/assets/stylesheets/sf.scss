@@ -1,0 +1,73 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Roboto+Condensed:400,700,300&subset=latin,latin-ext);
+@import 'foundation_and_overrides';
+
+/*
+ * generally applicable service_finder styles should go here
+ * design modules that are page or feature specific may go into separate files
+ */
+
+.role_active {
+  font-weight: bold;
+  color: $warning-color;
+  text-decoration: underline;
+}
+
+#main {
+  margin: 0;
+  padding-top: 2em;
+  padding-bottom: 10em;
+  min-height: 100vh;
+}
+
+#site-footer {
+  font-family: $font-family-sans-serif;
+  //color: #478AD3;
+  //color: $secondary-color;
+  clear: both;
+  display: block;
+
+  padding: 1rem .5rem;
+  width: 100%;
+}
+
+.pull-left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.pull-right {
+  text-align: right;
+}
+
+.page-title {
+  color: blue;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.logo {
+  height: 330px;
+  width: 350px;
+  padding: 5px;
+}
+
+.profile {
+  height: 130px;
+  width: 130px;
+  padding: 5px;
+}
+
+.thumb {
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+}
+
+#error-explanation {
+  background: rgba(255, 0, 0, 0.23); 
+  padding: 5px;
+}
+

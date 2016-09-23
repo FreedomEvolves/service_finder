@@ -1,0 +1,32 @@
+
+<h2>Provider: <%= @current_user.full_name %></h2>
+
+<div class='row'>
+  <div class="small-12 medium-6 columns">
+    <div class="panel small-12 columns" id="box-a"> <!-- "find-search" -->
+      <%= render partial: 'provider/find_a_client' %>
+    </div>
+  </div>
+  <% if @selected_client %>
+    <div class="small-12 medium-6 columns">
+      <div class="panel small-12 columns" id="box-b">  <!-- "selected-client" -->
+        <%= render partial: 'provider/client_profile' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class='row'>
+    <div class="small-12 medium-6 columns">
+      <div class="panel small-12 columns" id='box-c'>
+        <%= render partial: 'provider/clients_list' %>
+      </div>
+    </div>
+  <div class="small-12 medium-6 columns">
+    <div class="panel small-12 columns" id='box-d'>
+      <%= render partial: 'landing/inbox' %>
+    </div>
+  </div>
+</div>
+
+

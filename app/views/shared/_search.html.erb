@@ -1,0 +1,32 @@
+<%= form_for(@searh ||= Search.new) do |f| %>
+<% @category_presenter ||= ::Presenter::Categories.new %>
+  <div class="panel small-12 columns clearfix">
+    <div class='row'>
+      <div class='small-3 columns'>Category</div>
+      <div class='small-3 columns'>Specialty</div>
+      <div class='small-6 columns'>Distance in Miles</div>
+    </div>
+
+
+    <div class='row' id="category-search">
+
+      <div id="testout">
+      </div>
+
+      <div id="category-dropdown" class='small-3 columns'>
+        <%= f.select :category, @category_presenter.categories, class: 'search-dropdown' %>
+      </div>
+      <div id="specialty-drowndown" class='small-3 columns'>
+        <%= f.select :specialty, @category_presenter.specialties(params[:category]), class: 'search-dropdown' %>
+      </div>
+      <div id="service-dropdown" class='small-3 columns'>
+        <%= f.select :radius_miles, ['5 miles', '10 miles', '25 miles', '50 miles'] %>
+      </div>
+
+      <div class='small-3 columns'>
+          <a href="/events" class="button round small success">SEARCH</a>  
+      </div>
+    </div>
+
+  </div>
+<% end %>

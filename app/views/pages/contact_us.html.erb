@@ -1,0 +1,25 @@
+<div class='small-9 columns small-centered'>
+  <h2>Contact Us</h2>
+
+  <p>At ServiceFinder, we welcome your comments, feedback and question.  Drop us a line!</p>
+</div>
+  <div class="panel small-9 columns small-centered clearfix">
+    <div class="panel small-12">
+      <%#= f.label :name, "Your Name" %>
+      Your Name
+      <%#= f.text_field :name, :placeholder=>"Your name", :class => "requiredField" %>
+    </div>
+    <div class="panel small-12">
+      <%#= f.label :email, "Your E-Mail" %>
+      Your Email
+      <%#= f.email_field :email, :placeholder=>"e.g. gpburdell@example.com" %>
+    </div>
+    <div class="panel">
+      <%#= f.label :message, 'What are you interested in?' %>
+      Your Message
+      <%#= f.text_area :message, :rows => 10, :cols => 52 %>
+    </div>
+    <div class="center">
+      <button type="submit" class="button">Drop Us A Line!</button>
+    </div>
+  </div>

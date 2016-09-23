@@ -1,0 +1,25 @@
+<%= form_for([@event, @note], remote: true) do |f| %>
+  <% if @note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@note.errors.count, "error") %> prohibited this note from being saved:</h2>
+      <ul>
+        <% @note.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comment, "Comment regarding #{@event} on #{pretty_date @event.event_date}" %><br>
+    <%= f.text_area :comment, autofocus: true %>
+  </div>
+  <label for="rating"><h5>Give this event a thumbs up or thumbs down:</h5></label>
+  &nbsp;&nbsp;
+  <%#= f.radio_button :rating, true, required: true %><label for="event_rating_true"><h6>Thumbs Up</h6></label>
+  <%#= f.radio_button :rating, false, required: true %><label for="event_rating_false"><h6>Thumbs Down</h6></label>
+  <br>
+  <div class="actions">
+    <%= f.submit class: 'button success' %>
+  </div>
+<% end %>

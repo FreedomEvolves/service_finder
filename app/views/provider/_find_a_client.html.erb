@@ -1,0 +1,27 @@
+<div class='center'><h4>Find A Client</h4></div>
+<%= form_for(@provider_search) do |f| %>
+  <div class='row'>
+    <div class='small-6 columns'>By Acct #</div>
+    <div class='small-6 columns'>By Last Name</div>
+  </div>
+  <div class='row center'>
+    <div class='small-6 columns'>
+      <form>
+        <textarea rows='1'>Account #</textarea>
+      </form>
+    </div>
+    <div class='small-6 columns'>
+      <form>
+        <textarea rows='1'>Last Name</textarea>
+      </form>
+    </div>
+  </div><br>
+  <div class='small-6 columns'>By Address</div><br>
+  <div class='small-12 columns'>
+    <form>
+      <textarea rows='1'>Address</textarea>
+    </form>
+  </div>
+
+  <%= f.submit "Search", class: 'success button' %>
+<% end %>

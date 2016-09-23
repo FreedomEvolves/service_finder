@@ -1,0 +1,32 @@
+<%= link_to 'Back', clear_selected_profile_path, remote: true %>
+
+<header class='center'>
+  <strong><h4>Profile</h4></strong>
+</header>
+
+<div class='small-12 columns'>
+  <h6>Account # <%= @profile.id %></h6>
+  <h6><strong><%= @profile.profile_name %></strong></h6>
+  <h6>
+    <%= @profile.address %>
+    <h6><%=@profile.extra_detail %></h6>
+  </h6>
+  <% if @profile.events.any? %>
+    <h6>Date of Last Visit/Service: <%= @profile.last_service_date_for(@current_user.account) %></h6><nr>
+    <strong>Events with <%= @profile.profile_name %>:</strong><br>
+    <% @profile.events.each do |event| %>
+      <h6><%= link_to event.description, event_path(event), remote: true %></h6>
+    <% end %>  
+  <% end %>
+  <br>
+</div>
+<br>
+<div class='row'>
+  <% if @profile != nil %>
+    <div class='small-6 columns'>
+      <h6><%= link_to 'Add An Event', new_event_path(@profile.type, @profile.id), remote: true, class: 'small expand button', data: { reveal_id: 'create-event' }%></h6>
+      <div id="create-event" class="reveal-modal small" data-reveal aria-labelledby="Add an Event" aria-hidden="true" role="dialog"> 
+      </div>
+    </div>
+  <% end %>
+</div>

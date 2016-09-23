@@ -1,0 +1,7 @@
+<div class='center'><h4>Needing Attention</h4></div>
+<br>
+<ul>
+  <% @current_user.todo.each do |notice| %>
+    <li><u><%= notice %></u></li>
+  <% end %>
+</ul>

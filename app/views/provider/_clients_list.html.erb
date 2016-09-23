@@ -1,0 +1,23 @@
+<header class='row'>
+  <div class='small-5 columns center'><h4>Recent Clients</h4></div>
+  <div class='small-6 columns'>
+    <ul class="button-group round even-3">
+      <li><a href="#" class="button tiny success"><small>ALL</small></a></li>
+      <li><a href="#" class="button tiny success"><small>CURRENT</small></a></li>
+      <li><a href="#" class="button tiny success"><small>FORMER</small></a></li>
+    </ul>
+  </div>
+</header>
+<br>
+<div class='row'>
+  <% if @current_user.clients.any? %>
+    <% @clients.each do |client| %>
+      <h6><div class='small-10 columns'><u><%= link_to client.full_name, client_path(client), remote: true, method: :get %></u>&nbsp;
+      <em>(<%= client.gender %>, <%= client.date_of_birth %>)</em></div>
+      <br>
+      <div class='small-10 columns'><%= client.address %></div></h6><br>
+    <% end %>
+  <% else %>
+    You currently have no clients.
+  <% end %>
+</div>

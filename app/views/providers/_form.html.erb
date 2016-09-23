@@ -1,0 +1,79 @@
+<%= form_for(@provider) do |f| %>
+  <% if @provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+      <ul>
+      <% @provider.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='row'>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :title %>
+      <%= f.select(:title, Provider.title_options.collect { |t| [t] }, include_blank: 'Your preferred title ', required: true)%>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+  </div> 
+  <div class='row'>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :suite_or_office %>
+      <%= f.text_field :address1 %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :address %>
+      <%= f.text_field :address2 %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :state %>
+      <%= f.text_field :state %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :postal_code %>
+      <%= f.text_field :postal_code %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :country %>
+      <%= f.select(:country, Provider.country_options.collect { |c| [c] }, include_blank: 'Your country', required: true) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :years_of_experience %>
+      <%= f.text_field :years_of_experience %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :category %>
+      <%= f.text_field :category %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="small-12 medium-6 columns">
+      <%= f.label :specialty %>
+      <%= f.text_field :specialty %>
+    </div>
+  </div><br>
+  <div class="actions">
+    <%= f.submit 'SignUp', class: "small button" %>
+  </div>
+<% end %>

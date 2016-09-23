@@ -1,0 +1,50 @@
+<header><%= link_to 'Back', back_to_profile_path(@event), remote: true %></header><br>
+
+<div class='small-12 columns'>
+  <div class='row'>
+    <p><strong><%= @event.description %></strong>&nbsp;
+    <%= pretty_date @event.event_date %></p>      
+  </div>
+</div>
+
+<div class='small-6 columns'>
+  <strong>Provider:</strong><br>
+  <!-- Need to remove the conditional -->
+  <%= @event.provider.full_name_with_title if @event.provider_id != nil %><br><br>
+
+  <strong>Confirmed?</strong>
+  <%= @event.provider_confirmed ? 'yes' : 'no' %>
+</div>
+<div class='small-6 columns'>
+  <strong>Client:</strong>
+  <!-- Need to remove the conditional -->
+  <%= @event.client.full_name if @event.client_id != nil %><br><br>
+
+  <strong>Confirmed?</strong>
+  <%= @event.client_confirmed ? 'yes' : 'no' %><br>
+
+  <strong>Has insurance?</strong>
+  <%= @event.has_insurance ? 'yes' : 'no' %><br>
+
+  <strong>Amount paid:</strong>
+  <%= number_to_currency(@event.amount_paid) %><br><br>
+</div>
+<hr>
+<div>
+  
+  <% if @event.notes.any? %>
+    <h4>Notes</h4>
+    <dl>
+    <% @event.notes.each do |note| %>
+      <dd><%= note.comment %></dd>
+      <dt><strong>-- <%= note.author %></strong>, <%= pretty_date note.created_at %></dt>     
+    <% end %>
+    </dl>
+  <% end %><br>
+
+  <% unless @current_user.nil? %>
+    <u><%= link_to 'Add A Note', new_event_note_path(@event), class: 'small button', data: { reveal_ajax: true, reveal_id: 'create-note' } %></u>
+    <div id="create-note" class="reveal-modal medium" data-reveal aria-labelledby="Create Note" aria-hidden="true" role="dialog">
+    </div>
+  <% end %>
+</div>

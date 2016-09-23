@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<div class='container'>
+  <h3>Your Events</h3>
+  <%= render @events %>
+</div><br>
+
+<% if @current_user.nil? %>
+<% elsif @current_user.client? %>
+  <%= link_to 'Back to Dashboard', client_landing_path %>
+<% else %>
+  <%= link_to 'Back to Dashboard', provider_landing_path %>
+<% end %>
+
+<%#= link_to 'Edit', edit_event_path(event) %>
+<%#= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>

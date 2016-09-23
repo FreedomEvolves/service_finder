@@ -1,0 +1,15 @@
+<div class='center'>
+  <h4>Recent Providers</h4>
+</div>
+
+<div class='row'>
+  <% if @current_user.providers.any? %>
+    <% @providers.each do |provider| %>
+      <div class='small-10 columns'><h6><u><%= link_to provider.full_name_with_title, provider_path(provider), remote: true %></u>,&nbsp;
+      <em><%= provider.category %>, <%= provider.specialty %></em></h6></div>
+      <br>
+    <% end %>
+  <% else %>
+    You currently have no providers.
+  <% end %>
+</div>

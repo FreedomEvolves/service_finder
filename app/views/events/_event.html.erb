@@ -1,0 +1,55 @@
+<div class='panel small-4 large-12 column clearfix'>
+  <div class='row'>
+    <div class='small-4 column container'>
+      <% if @current_user != nil && @current_user.client? %>
+        Provider: <%= event.provider.full_name_with_title %><br>
+        Confirmed? <%= event.provider_confirmed ? 'yes' : 'no' %>
+      <% elsif @current_user != nil && @current_user.provider?%>
+        Client: <%= event.client.full_name %><br>
+        Confirmed? <%= event.client_confirmed ? 'yes' : 'no' %><br>
+        Has insurance? <%= event.has_insurance ? 'yes' : 'no' %><br>
+      <% else %>
+        Client: <%= event.client.full_name %><br>
+        Confirmed? <%= event.client_confirmed ? 'yes' : 'no' %><br>
+        Has insurance? <%= event.has_insurance ? 'yes' : 'no' %><br>
+        Amount paid? <%= number_to_currency(event.amount_paid) %><br>
+        <br>
+        Provider: <%= event.provider.full_name_with_title %>
+        <% if event.rating == true %>
+          <%=image_tag 'thumbs-up.png', class: 'thumb' %>
+        <% else %>
+          <%= image_tag 'thumbs-down.png', class: 'thumb' %>
+        <% end %><br>
+        Confirmed? <%= event.provider_confirmed ? 'yes' : 'no' %>
+      <% end %>
+     </div>
+
+    <div class='small-8 column container'>
+      <strong><%= pretty_date event.event_date %></strong><br><br>
+      <%= event.description %><br><br><br>
+      <div class='row'>
+        <div class='small-4 column'>
+          <h6><u><%= link_to 'View Notes', event_notes_path(event), class: 'small expand button', data: { reveal_ajax: true, reveal_id: 'create-note' } %></u></h6>
+          <div id="create-note" class="reveal-modal medium" data-reveal aria-labelledby="View Notes" aria-hidden="true" role="dialog">
+          </div>
+        </div>
+        <% unless @current_user.nil? %>
+          <div class='small-4 column'>
+            <h6><u><%= link_to 'Add A Note', new_event_note_path(event), class: 'small expand button', data: { reveal_ajax: true, reveal_id: 'create-note' } %></u></h6>
+            <div id="create-note" class="reveal-modal medium" data-reveal aria-labelledby="Create Note" aria-hidden="true" role="dialog">
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div> <br>
+
+
+
+
+
+
+
+
+

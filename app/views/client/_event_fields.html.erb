@@ -1,0 +1,11 @@
+<div class='row'>
+  <div class='small-12 columns'>
+    Do you have insurance? &nbsp; <%= f.check_box :has_insurance %>
+  </div>
+  <div class='small-4 columns'>
+    <h6>Amount Paid: </h6>
+  </div>
+  <div class='small-8 columns'>
+    <%= f.number_field :amount_paid, value: number_to_currency(f.object.amount_paid, precision: 3), :step => 0.01 %>
+  </div>
+</div>

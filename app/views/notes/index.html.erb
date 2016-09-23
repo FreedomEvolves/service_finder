@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+<h3>Notes</h3>
+<hr>
+
+<% if @notes && @notes.any? %>
+  <% @notes.each do |note| %>
+    <h5>  <%= note.comment %><br>
+    <div class='pull-right'>
+    <strong>-- <%= note.author %></strong>, <%= pretty_date note.created_at %>
+    </div></h5><br>
+  <% end %>
+<% else %>
+    <p>
+      There are no notes on this event yet.
+    </p>
+<% end %>
+<br>
+
+<%#= link_to 'Add a Note', new_event_note_path(event_id: note.event_id) %>

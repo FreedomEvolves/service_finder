@@ -1,0 +1,32 @@
+<%= link_to 'Back', clear_selected_profile_path, remote: true %>
+
+<header class='center'>
+  <strong><h4>Provider Profile</h4></strong>
+</header>
+
+<div class='small-12 columns'>
+  <h6>Account # <%= @provider.id %></h6>
+  <h6><strong><%= @provider.full_name_with_title %></strong></h6>
+  <h6>
+    <%= @provider.address %>
+    <h6>Current Services: <%= @provider.specialty %></h6>
+  </h6>
+  <% if @provider.events.any? %>
+    <h6>Date of Last Visit/Service: <%= @provider.last_service_date_for(@current_user.account) %></h6><nr>
+    <strong>Events with this provider:</strong><br>
+    <% @provider.events.each do |event| %>
+      <h6><%= link_to event.description, event_path(event), remote: true %></h6>
+    <% end %>  
+  <% end %>
+  <br>
+</div>
+<br>
+<div class='row'>
+  <% if @provider != nil %>
+    <div class='small-6 columns'>
+      <h6><%= link_to 'Add An Event', client_events_new_path(@provider), class: 'small expand button', data: { reveal_ajax: true, reveal_id: 'create-event' }%></h6>
+      <div id="create-event" class="reveal-modal small" data-reveal aria-labelledby="Add an Event" aria-hidden="true" role="dialog"> 
+      </div>
+    </div>
+  <% end %>
+</div>

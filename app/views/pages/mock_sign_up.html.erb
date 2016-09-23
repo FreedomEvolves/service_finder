@@ -1,0 +1,170 @@
+<br>
+<div class='container'>
+  <ul class="tabs" data-tab>
+    <li class="tab-title active"><a href="#panel1">Client SignUp</a></li>
+    <li class="tab-title"><a href="#panel2">Provider SignUp</a></li>
+  </ul>
+  <hr>
+  <div class="tabs-content">
+    <div class="content active" id="panel1">
+      <h3 class="small-9 columns small-centered center">Client SignUp</h3>
+      <div class="panel small-9 columns small-centered clearfix">
+        <%= form_for(@client) do |f| %>
+          <% if @client.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+              <ul>
+              <% @client.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, required: true %>
+            </div>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, required: true %>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :gender %>
+              <%= f.text_field :gender, required: true %>
+              <%#= f.select(:gender, Client.gender_options.collect {|g| [g] }, {:include_blank => 'Please indicate your gender'}, required: true) %>
+            </div>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :date_of_birth %>
+              <%= f.date_select :date_of_birth, start_year: 1945, end_year: 2015 %>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :apartment_or_building %>
+              <%= f.text_field :address1 %>
+            </div>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :street_address %>
+              <%= f.text_field :address2, required: true %>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :city %>
+              <%= f.text_field :city, required: true %>
+            </div>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :state %>
+              <%= f.text_field :state, required: true %>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :postal_code %>
+              <%= f.text_field :postal_code, required: true %>
+            </div>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :country %>
+              <%= f.text_field :country, required: true %>
+              <%#= f.select(:country, Client.country_options.collect {|c| [c] }, include_blank: 'Please inculde your country', required: true) %>
+            </div>
+          </div>
+          <div class="actions">
+            <%= f.submit 'SignUp' %>
+          </div>
+        <% end %>
+
+      </div> 
+    </div>
+
+    <div class="content" id="panel2">
+      <h3 class="small-9 columns small-centered center">Provider SignUp</h3>
+      <div class="panel small-9 columns small-centered clearfix">
+        <%= form_for(@provider) do |f| %>
+          <% if @provider.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+              <ul>
+              <% @provider.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :title %>
+              <%= f.select(:title, Provider.title_options.collect { |t| [t] }, include_blank: 'Your preferred title ')%>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, required: true %>
+            </div>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, required: true %>
+            </div>
+          </div> 
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :suite_or_office %>
+              <%= f.text_field :address1 %>
+            </div>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :address %>
+              <%= f.text_field :address2, required: true %>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :city %>
+              <%= f.text_field :city, required: true %>
+            </div>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :state %>
+              <%= f.text_field :state, required: true   %>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :postal_code %>
+              <%= f.text_field :postal_code, required: true   %>
+            </div>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :country %>
+              <%= f.text_field :country, required: true   %>
+              <%#= f.select(:country, Provider.country_options.collect { |c| [c] }, include_blank: 'Your country', required: true) %>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :years_of_experience %>
+              <%= f.text_field :years_of_experience %>
+            </div>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :category %>
+              <%= f.text_field :category %>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="small-12 medium-6 columns">
+              <%= f.label :specialty %>
+              <%= f.text_field :specialty %>
+            </div>
+          </div><br>
+          <div class="actions">
+            <%= f.submit 'SignUp', class: "small button" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

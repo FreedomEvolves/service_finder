@@ -1,0 +1,33 @@
+<header class='center'>
+  <strong><h4>Client Profile</h4></strong>
+</header>
+
+<div class='small-12 columns'>
+  <h6>Account # <%= @selected_client.id %></h6>
+  <h6><%= @selected_client.full_name %></h6>
+  <h6>
+    <%= @selected_client.address %>
+  </h6>
+  <h6><%= time_ago_in_words @selected_client.date_of_birth %> old</h6>
+  <% if @selected_client.events.any? %>
+    <h6>Date of Last Visit/Service: <%= @selected_client.last_service_date_for(@current_user.account) %></h6><br>
+  <% end %>
+    <% if @selected_client.events.any? %>
+    <h6>Date of Last Visit/Service: <%= @selected_client.last_service_date_for(@current_user.account) %></h6><nr>
+    <strong>Events with this client:</strong><br>
+    <% @selected_client.events.each do |event| %>
+      <h6><%= link_to event.description, event_path(event) %></h6>
+    <% end %>  
+  <% end %>
+</div>
+<br>
+<div class="row">
+  <div class='small-6 columns'>
+    <%#= link_to 'Create Client Event', provider_events_new_path(@selected_client), class: 'small expand button', data: { reveal_ajax: true, reveal_id: 'create-event' } %>
+    <div id="create-event" class="reveal-modal small" data-reveal aria-labelledby="Review an Event" aria-hidden="true" role="dialog">
+    </div>
+  </div>
+  <div class='small-6 columns'>
+    <%= link_to 'See Client Events', events_path(@selected_client), class: "small expand button" %>
+  </div>
+</div>

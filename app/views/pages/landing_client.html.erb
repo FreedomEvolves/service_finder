@@ -1,0 +1,31 @@
+<h2>Client: <%= @current_user.full_name %></h2>
+
+<%= form_for(@client_search) do |f| %>
+  <%= render partial: '/shared/category_search', locals: {f: f} %>
+<% end %>
+
+<div class='row'>
+  <div class="small-12 medium-6 columns">
+    <div class="panel small-12 columns" id='box-a'>
+      <%= render partial: 'client/personal_profile' %>
+    </div>
+  </div>
+  <div class="small-12 medium-6 columns">
+    <div class="panel small-12 columns" id='box-b'>
+      <%= render partial: 'client/find_a_provider' %>
+    </div>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="small-12 medium-6 columns">
+    <div class="panel small-12 columns" id='box-c'>
+      <%= render partial: 'client/list_of_providers' %>
+    </div>
+  </div>
+  <div class="small-12 medium-6 columns">
+    <div class="panel small-12 columns" id='box-d'>
+      <%= render partial: 'landing/inbox' %>
+    </div>
+  </div>
+</div>
